@@ -252,3 +252,71 @@ export async function apiAnalyzeCv(file: File): Promise<CvAnalysis> {
   });
   return handleResponse<CvAnalysis>(res);
 }
+
+export type InterviewQuestion = {
+  id: number;
+  text: string;
+  topic: string;
+};
+
+export type StartInterviewResponse = {
+  id: string;
+  intro: string;
+  questions: InterviewQuestion[];
+  remainingToday: number;
+};
+
+export type QuestionFeedback = {
+  questionId: number;
+  score: number;
+  feedback: string;
+  modelAnswer?: string;
+};
+
+export type InterviewFeedback = {
+  id: string;
+  overallScore: number;
+  summary: string;
+  questionFeedback: QuestionFeedback[];
+  strengths: string[];
+  improvements: string[];
+  nextSteps: string[];
+  questions: InterviewQuestion[];
+};
+
+export type RemainingInterviews = {
+  used: number;
+  remaining: number;
+  limit: number;
+};
+
+export type InterviewAnswer = {
+  questionId: number;
+  answer: string;
+  skipped: boolean;
+};
+
+export async function apiStartInterview(payload: {
+  type: "HR" | "TECHNICAL" | "MIXED";
+  target: "GENERAL" | "SPECIFIC";
+  jobApplicationId?: string;
+}): Promise<StartInterviewResponse> {
+  return apiPost<StartInterviewResponse, typeof payload>(
+    "/interviews/start",
+    payload,
+  );
+}
+
+export async function apiSubmitInterview(
+  id: string,
+  answers: InterviewAnswer[],
+): Promise<InterviewFeedback> {
+  return apiPost<InterviewFeedback, { answers: InterviewAnswer[] }>(
+    `/interviews/${id}/submit`,
+    { answers },
+  );
+}
+
+export async function apiGetRemainingInterviews(): Promise<RemainingInterviews> {
+  return apiGet<RemainingInterviews>("/interviews/remaining");
+}

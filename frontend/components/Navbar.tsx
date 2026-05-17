@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: "/market-insights", label: "Market" },
   { href: "/recommendations", label: "Learn" },
   { href: "/cv-analyzer", label: "CV Analyzer" },
+  { href: "/interview-prep", label: "Interview" },
 ];
 
 const AUTH_ROUTES = [

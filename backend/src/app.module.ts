@@ -13,6 +13,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { SchedulerModule } from './scheduler/scheduler.module';
 import { RecommendationsModule } from './recommendations/recommendations.module';
 import { AiModule } from './ai/ai.module';
+import { InterviewsModule } from './interviews/interviews.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { AiModule } from './ai/ai.module';
     SchedulerModule,
     RecommendationsModule,
     AiModule,
+    InterviewsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
