@@ -1,4 +1,5 @@
 <svg viewBox="0 0 940 620" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <rect x="4" y="4" width="932" height="612" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
