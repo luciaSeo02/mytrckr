@@ -1,0 +1,89 @@
+<svg viewBox="0 0 940 620" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+    <style>
+      .box { rx: 12; stroke-width: 2; }
+      .title { font-size: 16px; font-weight: 700; fill: #0f172a; }
+      .sub { font-size: 12px; fill: #475569; }
+      .host { font-size: 11px; font-weight: 600; letter-spacing: .3px; }
+      .edge { stroke: #64748b; stroke-width: 2; fill: none; }
+      .edgelabel { font-size: 11px; fill: #64748b; font-style: italic; }
+      .group { fill: none; stroke: #cbd5e1; stroke-width: 1.5; stroke-dasharray: 5 4; rx: 16; }
+      .grouplabel { font-size: 11px; font-weight: 700; fill: #94a3b8; letter-spacing: 1px; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="470" y="34" text-anchor="middle" font-size="20" font-weight="800" fill="#0f172a">my/trckr architecture</text>
+
+  <!-- Browser -->
+  <rect x="345" y="58" width="250" height="56" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <text x="470" y="82" text-anchor="middle" class="title">User's Browser</text>
+  <text x="470" y="100" text-anchor="middle" class="sub">the person using the app</text>
+
+  <!-- edge: browser -> frontend -->
+  <path class="edge" d="M470,114 L470,150" marker-end="url(#arrow)"/>
+
+  <!-- Frontend (Vercel) -->
+  <rect x="330" y="150" width="280" height="70" rx="12" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="470" y="178" text-anchor="middle" class="title">Next.js Frontend</text>
+  <text x="470" y="197" text-anchor="middle" class="sub">React · Tailwind · Recharts</text>
+  <rect x="330" y="150" width="86" height="20" rx="10" fill="#0f172a"/>
+  <text x="373" y="164" text-anchor="middle" class="host" fill="#ffffff">VERCEL</text>
+
+  <!-- edge: frontend -> backend -->
+  <path class="edge" d="M470,220 L470,262" marker-end="url(#arrow)"/>
+  <text x="482" y="245" class="edgelabel">REST over HTTPS</text>
+  <text x="482" y="258" class="edgelabel">JWT (httpOnly cookies)</text>
+
+  <!-- Backend (Render) -->
+  <rect x="330" y="262" width="280" height="86" rx="12" fill="#ffffff" stroke="#6d28d9" stroke-width="2"/>
+  <text x="470" y="290" text-anchor="middle" class="title">NestJS API</text>
+  <text x="470" y="309" text-anchor="middle" class="sub">controllers · services · guards</text>
+  <text x="470" y="326" text-anchor="middle" class="sub">cron scheduler · auth</text>
+  <rect x="330" y="262" width="80" height="20" rx="10" fill="#6d28d9"/>
+  <text x="370" y="276" text-anchor="middle" class="host" fill="#ffffff">RENDER</text>
+
+  <!-- edge: backend -> prisma -->
+  <path class="edge" d="M470,348 L470,384" marker-end="url(#arrow)"/>
+
+  <!-- Prisma -->
+  <rect x="360" y="384" width="220" height="44" rx="10" fill="#f8fafc" stroke="#2d3748" stroke-width="2"/>
+  <text x="470" y="411" text-anchor="middle" class="title" font-size="14">Prisma ORM</text>
+
+  <!-- edge: prisma -> db -->
+  <path class="edge" d="M470,428 L470,464" marker-end="url(#arrow)"/>
+
+  <!-- Database (Supabase) -->
+  <rect x="330" y="464" width="280" height="70" rx="12" fill="#ffffff" stroke="#3ecf8e" stroke-width="2"/>
+  <text x="470" y="492" text-anchor="middle" class="title">PostgreSQL</text>
+  <text x="470" y="511" text-anchor="middle" class="sub">relational data store</text>
+  <rect x="330" y="464" width="92" height="20" rx="10" fill="#3ecf8e"/>
+  <text x="376" y="478" text-anchor="middle" class="host" fill="#053b26">SUPABASE</text>
+
+  <!-- ===== External services group ===== -->
+  <rect class="group" x="672" y="250" width="238" height="200"/>
+  <text x="791" y="242" text-anchor="middle" class="grouplabel">EXTERNAL SERVICES</text>
+
+  <!-- Gemini -->
+  <rect x="692" y="266" width="198" height="48" rx="10" fill="#ffffff" stroke="#8e75b2" stroke-width="2"/>
+  <text x="791" y="288" text-anchor="middle" class="title" font-size="14">Google Gemini</text>
+  <text x="791" y="304" text-anchor="middle" class="sub">parser · CV · interviews</text>
+
+  <!-- Adzuna -->
+  <rect x="692" y="326" width="198" height="48" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+  <text x="791" y="348" text-anchor="middle" class="title" font-size="14">Adzuna API</text>
+  <text x="791" y="364" text-anchor="middle" class="sub">market data (weekly cron)</text>
+
+  <!-- Brevo -->
+  <rect x="692" y="386" width="198" height="48" rx="10" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="791" y="408" text-anchor="middle" class="title" font-size="14">Brevo</text>
+  <text x="791" y="424" text-anchor="middle" class="sub">transactional email</text>
+
+  <!-- edges: backend -> external services -->
+  <path class="edge" d="M610,300 C650,300 655,290 692,290" marker-end="url(#arrow)"/>
+  <path class="edge" d="M610,312 C645,312 655,350 692,350" marker-end="url(#arrow)"/>
+  <path class="edge" d="M610,324 C640,324 650,410 692,410" marker-end="url(#arrow)"/>
+</svg>
