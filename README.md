@@ -151,18 +151,18 @@ A Next.js frontend on Vercel talks to a NestJS REST API on Render, which persist
 ```bash
 cd backend
 npm install
-
+ 
 # Start PostgreSQL locally
 docker-compose up -d
-
+ 
 # Set up environment variables
 cp .env.example .env
-# Fill in: DATABASE_URL, JWT_SECRET, BREVO_API_KEY, ADZUNA_API_KEY, GEMINI_API_KEY
-
+# Fill in your own values (DATABASE_URL, JWT_SECRET, GEMINI_API_KEY, BREVO_API_KEY, ADZUNA_APP_ID, ADZUNA_APP_KEY, ...)
+ 
 # Run migrations & seed
 npx prisma migrate dev
 npm run seed
-
+ 
 # Start dev server
 npm run start:dev
 ```
@@ -171,7 +171,7 @@ npm run start:dev
 ```bash
 cd frontend
 npm install
-cp .env.example .env.local
+cp .env.example .env.local   # set NEXT_PUBLIC_API_URL to your backend URL
 npm run dev
 ```
 
